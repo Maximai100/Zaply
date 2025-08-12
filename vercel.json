@@ -3,6 +3,7 @@
   "buildCommand": "cd apps/frontend && npm ci --no-audit --no-fund && npm run vercel-build",
   "outputDirectory": "apps/frontend/dist",
   "routes": [
+    { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
