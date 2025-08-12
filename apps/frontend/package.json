@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview --port 4173",
-    "vercel-build": "VITE_API_URL=https://1.cycloscope.online vite build"
+    "vercel-build": "VITE_API_URL=https://1.cycloscope.online vite build && cp -r dist/* ../.."
   },
   "dependencies": {
     "react": "^18.3.1",
