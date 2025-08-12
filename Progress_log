@@ -1,0 +1,38 @@
+Zaply — Progress Log
+
+Статус репозитория
+- Структура монорепо: apps/api, apps/frontend, db, infra, pm2, README.md
+- Фронтенд: React + Vite + Tailwind; сборка подтверждена (vite build успешен)
+- Бэкенд: Express + pg + luxon; поддержка Directus (условный режим по DIRECTUS_URL/TOKEN)
+- Миграции/сид: db/migrations.sql, db/seeds.sql — соответствуют спецификации
+
+Ключевые изменения (за текущую сессию)
+- vercel.json переведён на схему: buildCommand + outputDirectory, SPA-роутинг с filesystem handler
+- apps/frontend/package.json: добавлен скрипт vercel-build (bash vercel-build.sh)
+- apps/frontend/vite.config.js: проброс import.meta.env.VITE_API_URL и совместимость сборки
+- apps/frontend/src/lib/api.js: fallback API URL = https://1.cycloscope.online
+- Добавлен .vercelignore для исключения неиспользуемых директорий в деплое
+
+Состояние деплоя (Vercel)
+- Сборка проходит (vite build OK, артефакты в apps/frontend/dist)
+- Конфигурация Vercel: buildCommand=«cd apps/frontend && npm ci … && npm run vercel-build», outputDirectory=«apps/frontend/dist», корректный SPA-rewrite
+- Если Production-домен отдаёт белый экран — проверить, что последний деплой промоутнут в Production; открыть Preview-URL и затем Promote
+
+Локальный запуск
+- API: cd apps/api && cp .env.example .env && npm i && npm run dev (порт 8787)
+- Frontend: cd apps/frontend && npm i && npm run dev (порт 5173)
+- Онбординг: /setup; Публичная: /u/anna
+
+Directus
+- Поддержаны ENV: DIRECTUS_URL, DIRECTUS_TOKEN, DIRECTUS_COLL_* (masters, services, working_hours, time_off, clients, bookings)
+- Все публичные CRUD и онбординг работают как с БД, так и через Directus REST
+
+Следующие действия
+- На сервере: убедиться, что API доступен и .env заполнен (DATABASE_URL, SERVICH_SIGNUP_SECRET и т.д.)
+- В Vercel: Settings → Git (Production Branch = main), Deployments → Redeploy/Promote
+- В Vercel: при необходимости добавить VITE_API_URL=https://1.cycloscope.online в Environment Variables
+- Проверить страницы: /setup, /u/anna, /health API
+
+Примечания
+- Ошибки «404 NOT_FOUND»/«DEPLOYMENT_NOT_FOUND» устранены правкой vercel.json и процедурой Promote
+- Если фронт остаётся пустым: см. консоль браузера, убедиться что index.html и assets отдаются (filesystem handler), и что API отвечает CORS

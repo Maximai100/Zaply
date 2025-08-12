@@ -1,4 +1,4 @@
-const API = import.meta.env.VITE_API_URL || 'https://1.cycloscope.online';
+const API = import.meta.env.VITE_API_URL || '/api';
 
 export async function api(path, opts = {}) {
   const res = await fetch(`${API}${path}`, {

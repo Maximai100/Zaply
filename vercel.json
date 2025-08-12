@@ -1,11 +1,24 @@
 {
   "version": 2,
-  "buildCommand": "cd apps/frontend && npm ci --no-audit --no-fund && npm run vercel-build",
-  "outputDirectory": "apps/frontend/dist",
+  "builds": [
+    {
+      "src": "apps/frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "apps/frontend/dist"
+      }
+    }
+  ],
   "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/index.html" }
-  ]
+  ],
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
 
 
