@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+build/
+.vite/
+
+# Environment
+.env
+apps/api/.env
+apps/frontend/.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor/OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+
