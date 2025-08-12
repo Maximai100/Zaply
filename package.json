@@ -1,8 +1,0 @@
-{
-  "name": "zaply",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "luxon": "^3.4.4"
-  }
-}
