@@ -1,0 +1,12 @@
+{
+  "name": "zaply",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "cd apps/frontend && npm run build",
+    "dev": "cd apps/frontend && npm run dev"
+  }
+}
