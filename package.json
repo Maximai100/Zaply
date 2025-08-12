@@ -8,5 +8,8 @@
   "scripts": {
     "build": "cd apps/frontend && npm run build",
     "dev": "cd apps/frontend && npm run dev"
+  },
+  "env": {
+    "VITE_API_URL": "https://1.cycloscope.online"
   }
 }
