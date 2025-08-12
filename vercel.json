@@ -4,12 +4,12 @@
     {
       "src": "apps/frontend/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "apps/frontend/dist" }
+      "config": { 
+        "distDir": "apps/frontend/dist",
+        "outputDirectory": "apps/frontend/dist"
+      }
     }
   ],
-  "buildCommand": "npm run build",
-  "installCommand": "npm install",
-  "framework": "vite",
   "routes": [
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/favicon.ico", "dest": "/favicon.ico" },
