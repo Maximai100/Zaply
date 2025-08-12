@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --port 4173"
+    "preview": "vite preview --port 4173",
+    "vercel-build": "vite build"
   },
   "dependencies": {
     "react": "^18.3.1",
