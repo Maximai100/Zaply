@@ -1,0 +1,6 @@
+apps/api/
+db/
+infra/
+pm2/
+README.md
+.gitignore
